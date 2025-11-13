@@ -29,9 +29,7 @@ namespace Bai09
 
             this.button2.Click += new EventHandler(BtnChonMon_Click);
             this.button1.Click += new EventHandler(BtnBoChon_Click);
-
-            this.button3.Click += new EventHandler(BtnLuuThongTin_Click);
-            this.button4.Click += new EventHandler(BtnXoaChon_Click);
+            //this.button4.Click += new EventHandler(BtnXoaChon_Click);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -137,24 +135,32 @@ namespace Bai09
 
             CapNhatDataGridView();
 
-            BtnXoaChon_Click(null, null);
+            //BtnXoaChon_Click(null, null);
         }
 
         private void BtnXoaChon_Click(object sender, EventArgs e)
         {
-            maskedTextBox1.Clear();
-            maskedTextBox3.Clear();
-            comboBox1.SelectedIndex = 0;
-            checkBox1.Checked = false;
-            checkBox2.Checked = false;
 
-            foreach (object item in listBox2.Items.Cast<object>().ToList())
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                listBox1.Items.Add(item);
-                listBox2.Items.Remove(item);
+                string mssvCanXoa = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                var svCanXoa = danhSachSV.FirstOrDefault(sv => sv.MSSV == mssvCanXoa);
+                if (svCanXoa != null)
+                {
+                    DialogResult dialogResult = MessageBox.Show(
+                        $"Bạn có chắc muốn xóa sinh viên {svCanXoa.HoTen} ({svCanXoa.MSSV})?",
+                        "Xác nhận xóa",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        danhSachSV.Remove(svCanXoa);
+                        CapNhatDataGridView();
+                        MessageBox.Show("Xóa sinh viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
-
-
         }
 
         private void CapNhatDataGridView()
