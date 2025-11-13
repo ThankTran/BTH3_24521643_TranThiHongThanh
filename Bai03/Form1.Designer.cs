@@ -35,9 +35,9 @@
             // 
             this.button1.BackColor = System.Drawing.Color.MistyRose;
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(322, 195);
+            this.button1.Location = new System.Drawing.Point(272, 161);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 49);
+            this.button1.Size = new System.Drawing.Size(276, 97);
             this.button1.TabIndex = 0;
             this.button1.Text = "Change Color";
             this.button1.UseVisualStyleBackColor = false;
