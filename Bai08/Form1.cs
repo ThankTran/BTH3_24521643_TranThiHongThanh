@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Bai08
 {
-    
+
 
     public partial class Form1 : Form
     {
@@ -24,7 +24,8 @@ namespace Bai08
         public Form1()
         {
             InitializeComponent();
-            this.dgvTaiKhoan.RowHeadersVisible = false;
+            this.dgvTaiKhoan.RowHeadersVisible = true;//
+            this.dgvTaiKhoan.AllowUserToAddRows = false;//
             this.btXoa.Click += new EventHandler(btXoa_Click);
             this.btThoat.Click += new EventHandler(btThoat_Click);
             this.dgvTaiKhoan.CellClick += new DataGridViewCellEventHandler(dgvTaiKhoan_CellClick);
@@ -40,12 +41,12 @@ namespace Bai08
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            dgvTaiKhoan.AutoGenerateColumns = false; 
+            dgvTaiKhoan.AutoGenerateColumns = false;
             dgvTaiKhoan.Columns["Column2"].DataPropertyName = "SoTK";
             dgvTaiKhoan.Columns["Column3"].DataPropertyName = "TenKH";
             dgvTaiKhoan.Columns["Column4"].DataPropertyName = "DiaChi";
             dgvTaiKhoan.Columns["Column5"].DataPropertyName = "SoTien";
-            CapNhatDataGridView();
+            //CapNhatDataGridView();
         }
 
         private void CapNhatDataGridView()
